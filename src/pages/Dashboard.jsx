@@ -1,14 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TaskCard from '../components/TaskCard';
 import ChatSection from '../components/ChatSection';
-
-const tasks = [
-  { id: 1, title: 'New Landing Project', description: 'Landing Page UI', status: 'in-progress' },
-  { id: 2, title: 'Footer Design', description: 'Landing Page UI', status: 'to-do' },
-];
+import { getTasks } from '../utils/api';
 
 const Dashboard = () => {
-  const [taskList, setTaskList] = useState(tasks);
+  const [taskList, setTaskList] = useState([]);
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const tasks = await getTasks();
+      setTaskList(tasks.slice(0, 5)); // Limit to 5 tasks for demo purposes
+    };
+
+    fetchTasks();
+  }, []);
 
   return (
     <div className="p-8">
