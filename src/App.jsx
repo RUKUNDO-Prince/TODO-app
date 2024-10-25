@@ -1,11 +1,22 @@
-import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
 
-const App = () => {
+function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <div className="flex">
+      <Router>
+        <Sidebar />
+        <div className="flex-grow">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+          </Routes>
+        </div>
+      </Router>
+    </div>
+  );
 }
 
-export default App
+export default App;
