@@ -58,4 +58,4 @@ This app uses a mock API for performing task CRUD operations. The API endpoints 
 You can deploy this app on platforms like Netlify or Vercel by pushing the repository and linking it to your platform account.
 
 ## License
-MIT License.
+This project is licensed under the MIT License.
