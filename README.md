@@ -1,61 +1,112 @@
-# Task Manager App
+# Inventory Management API
 
-## Overview
-This is a task manager application built using React and styled with Tailwind CSS. The app supports dark mode and has multi-language support (English and French). It also includes CRUD operations using a dummy API and comes with unit tests and E2E tests using Cypress.
+This project is a RESTful API for managing inventory, built using TypeScript, Express, and PostgreSQL with TypeORM. It allows users to add, update, delete, and view products in the inventory while providing optional features like filtering, event logging, and pagination.
 
 ## Features
-- Responsive UI
-- Dark mode toggle
-- i18n support (English and French)
-- Task CRUD operations using a mock API
-- Unit & E2E tests
-- GitHub Actions for CI
+- **Add New Products**: Add new products with unique names.
+- **Update Product Quantity**: Update the quantity of existing products.
+- **Delete Products**: Delete products, but only if their quantity is zero.
+- **Retrieve Products**: Fetch all products or filter them by category or quantity range.
+- **Event Logging**: Track when products are added, updated, or deleted.
+- **Pagination**: Retrieve paginated lists of products.
+
+### Optional Features:
+1. **Filter Products**: By category or by quantity range.
+2. **Event Logging**: Tracks product add, update, delete events.
+3. **Pagination**: Handles large datasets.
+
+## Prerequisites
+Before running the project, ensure you have:
+- Node.js installed
+- PostgreSQL installed and running
 
 ## Installation
 
 1. Clone the repository:
-git clone https://github.com/RUKUNDO-Prince/TODO-app.git cd task-manager
+   ```bash
+   git clone https://github.com/yourusername/inventory-management-api.git
+   ```
 
-markdown
-Copy code
+2. Navigate to the project directory:
+   ```bash
+   cd inventory-management-api
+   ```
 
-2. Install dependencies:
-npm install
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-markdown
-Copy code
+4. Set up your environment variables in a `.env` file:
+   ```
+   POSTGRES_HOST=localhost
+   POSTGRES_PORT=5432
+   POSTGRES_USER=your_user
+   POSTGRES_PASSWORD=your_password
+   POSTGRES_DB=inventory_db
+   ```
 
-3. Run the development server:
-npm run dev
+5. Create the database schema:
+   ```bash
+   npm run typeorm migration:run
+   ```
 
-markdown
-Copy code
+## Running the Application
 
-4. Run tests:
-npm run test
+1. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-markdown
-Copy code
+2. The API will be available at `http://localhost:3000`.
 
-5. Run E2E tests:
-npx cypress open
+## Endpoints
 
-markdown
-Copy code
+### 1. **Add Product**
+   - **POST** `/api/products`
+   - Request Body:
+     ```json
+     {
+       "name": "Product Name",
+       "quantity": 10,
+       "category": "Category Name"
+     }
+     ```
 
-## Task CRUD Operations
+### 2. **Update Product Quantity**
+   - **PUT** `/api/products/:id`
+   - Request Body:
+     ```json
+     {
+       "quantity": 5
+     }
+     ```
 
-This app uses a mock API for performing task CRUD operations. The API endpoints are powered by `jsonplaceholder.typicode.com`.
+### 3. **Delete Product**
+   - **DELETE** `/api/products/:id`
 
-### Endpoints:
+### 4. **Retrieve Products**
+   - **GET** `/api/products`
+   - Optional Query Parameters:
+     - `category`
+     - `minQuantity`
+     - `maxQuantity`
+     - `page`
+     - `limit`
 
-- **GET** `/todos`: Fetches the task list.
-- **POST** `/todos`: Creates a new task.
-- **PUT** `/todos/:id`: Updates an existing task.
-- **DELETE** `/todos/:id`: Deletes a task.
+### 5. **Retrieve Single Product by ID**
+   - **GET** `/api/products/:id`
 
-## Deployment
-You can deploy this app on platforms like Netlify or Vercel by pushing the repository and linking it to your platform account.
+### Optional Features
+- Filter products by category or quantity range with query parameters.
+- Paginate results using `page` and `limit` parameters.
+- Logs for all product actions are recorded and stored in the database.
+
+## Technologies Used
+- **Backend**: Node.js, Express, TypeScript
+- **Database**: PostgreSQL
+- **ORM**: TypeORM
+- **Other**: dotenv for environment configuration
 
 ## License
 This project is licensed under the MIT License.
