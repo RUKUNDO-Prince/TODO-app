@@ -1,17 +1,35 @@
-import { FaTasks, FaComments, FaCalendarAlt } from 'react-icons/fa';
+import React from 'react'
+import { GrHomeRounded } from "react-icons/gr";
+import { PiFileTextBold } from "react-icons/pi";
+import { HiOutlineFolderRemove } from "react-icons/hi";
+import { FaPlus } from "react-icons/fa6";
+import { CiSettings, CiUser } from "react-icons/ci";
 
 const Sidebar = () => {
   return (
-    <div className="bg-gray-800 text-white w-60 h-screen">
-      <nav>
-        <ul>
-          <li className="p-4 hover:bg-gray-600"><FaTasks className="inline mr-2" />Tasks</li>
-          <li className="p-4 hover:bg-gray-600"><FaComments className="inline mr-2" />Chat</li>
-          <li className="p-4 hover:bg-gray-600"><FaCalendarAlt className="inline mr-2" />Calendar</li>
-        </ul>
-      </nav>
+    <div>
+      <div>
+        <p>Logo</p>
+        <div>
+          <GrHomeRounded />
+          <GrHomeRounded />
+          <PiFileTextBold />
+          <HiOutlineFolderRemove />
+          <HiOutlineFolderRemove />
+        </div>
+      </div>
+      <div>
+        <img src="" alt="" />
+        <img src="" alt="" />
+        <img src="" alt="" />
+        <FaPlus />
+      </div>
+      <div>
+        <CiSettings />
+        <CiUser />
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar
