@@ -8,9 +8,9 @@ function App() {
       <Router>
         <Sidebar />
         <div className="flex-grow">
-          <Header />
+          {/* <Header /> */}
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            {/* <Route path="/" element={<Dashboard />} /> */}
           </Routes>
         </div>
       </Router>

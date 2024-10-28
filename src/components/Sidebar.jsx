@@ -7,7 +7,7 @@ import { CiSettings, CiUser } from "react-icons/ci";
 
 const Sidebar = () => {
   return (
-    <div>
+    <div className='h-screen flex justify-between flex-col'>
       <div>
         <p>Logo</p>
         <div>
